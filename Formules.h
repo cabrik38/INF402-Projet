@@ -28,7 +28,7 @@ typedef struct Noeud {
 
 typedef struct Noeud* Arbre;
 
-
+Arbre creer_variable(int i, int j, int k, int neg);
 Arbre creer_conjonction(Arbre A1, Arbre A2);
 Arbre creer_disjonction(Arbre A1, Arbre A2);
 Arbre creer_noeud();
