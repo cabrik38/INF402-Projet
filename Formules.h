@@ -1,6 +1,5 @@
-#ifndef H_STRUCTURES
-#define H_STRUCTURES
-
+#ifndef H_FORMULES
+#define H_FORMULES
 
 /* -----------------------------------------------------------
     (x, y) = coordonnées de la variable sur la grille
@@ -17,16 +16,22 @@ typedef struct Variable {
 typedef enum NatureLexeme { TOP, BOTTOM, VARIABLE, CONJONCTION, DISJONCTION } NatureLexeme;
 
 typedef struct Lexeme {
-    struct NatureLexeme nature;
-    struct Variable var;
+    NatureLexeme nature;
+    Variable var;
 } Lexeme;
 
 typedef struct Noeud {
-    struct Lexeme lex;
+    Lexeme lex;
     struct Noeud* gauche;
     struct Noeud* droit;
 } Noeud;
 
 typedef struct Noeud* Arbre;
+
+
+Arbre creer_conjonction(Arbre A1, Arbre A2);
+Arbre creer_disjonction(Arbre A1, Arbre A2);
+Arbre creer_noeud();
+void liberer_arbre(Arbre A);
 
 #endif
