@@ -22,7 +22,7 @@ typedef struct Lexeme {
 } Lexeme;
 
 typedef struct Noeud {
-    struct Lexeme l;
+    struct Lexeme lex;
     struct Noeud* gauche;
     struct Noeud* droit;
 } Noeud;
