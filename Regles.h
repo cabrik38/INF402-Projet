@@ -1,7 +1,7 @@
 #ifndef H_REGLES
 #define H_REGLES
 
-#include "Structures.h"
+#include "Formules.h"
 
 /* ------------------------------
     regle_case(i,j)
