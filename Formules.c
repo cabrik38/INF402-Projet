@@ -28,6 +28,8 @@ Arbre creer_disjonction(Arbre A1, Arbre A2){
 
 Arbre creer_noeud(){
     Arbre n = (Arbre) malloc(sizeof(Noeud));
+    n->gauche = NULL;
+    n->droit = NULL;
     return n;
 }
 
