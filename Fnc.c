@@ -1,21 +1,5 @@
 #include "Fnc.h"
 
-Liste clauses(Arbre A){
-    List list;
-    init_liste(&list);
-    if (A != NULL){
-        if (A->lex.nature != DISJONCTION){
-            /* Si A est une clause ou un littéral isolé, la clause créée à partir de A est ajoutée à la liste */
-            ajouter_clause(&list, creer_clause(A));
-        } else {
-            /* Si A est une FNC, la listes des clauses des enfant gauche et droit de A sont toutes deux ajoutées à la liste */
-            ajouter_liste(&list, clauses(A->gauche));
-            ajouter_liste(&list, clauses(A->droit));
-        }
-    }
-    return list;
-}
-
 int fnc(Arbre A){
     if (A == NULL){
         return -1;
@@ -84,6 +68,22 @@ int fnc(Arbre A){
             }
         }
     }
+}
+
+Liste clauses(Arbre A){
+    List list;
+    init_liste(&list);
+    if (A != NULL){
+        if (A->lex.nature != DISJONCTION){
+            /* Si A est une clause ou un littéral isolé, la clause créée à partir de A est ajoutée à la liste */
+            ajouter_clause(&list, creer_clause(A));
+        } else {
+            /* Si A est une FNC, la listes des clauses des enfant gauche et droit de A sont toutes deux ajoutées à la liste */
+            ajouter_liste(&list, clauses(A->gauche));
+            ajouter_liste(&list, clauses(A->droit));
+        }
+    }
+    return list;
 }
 
 Clause* creer_clause(Arbre A){
