@@ -2,7 +2,7 @@
 
 Liste clauses(Arbre A){
     List list;
-    list.longueur = 0;
+    init_liste(&list);
     if (A != NULL){
         if (A->lex.nature != DISJONCTION){
             ajouter_clause(&list, creer_clause(A));
@@ -27,9 +27,13 @@ int fnc(Arbre A){
             if (g == 0 && d == 0){
                 return 0;
             } else if (g == 0 && d == 1){
-                Liste l_clauses = clauses(A->droit);
-                for (int i = 0; i < l_clauses.longueur; i++){
-                    
+                Liste lc_d = clauses(A->droit);
+                Arbre Ag = A->gauche;
+                Clause* cl = lc_d.tete;
+                while (cl != NULL){
+                    Arbre Af = creer_disjonction(Ag, cl->a);
+                    A = creer_conjonction(A, Af);
+                    cl = cl->suivant;
                 }
                 return 1;
             } else if (g == 1 && d == 0){
@@ -47,21 +51,33 @@ int fnc(Arbre A){
     }
 }
 
-Liste creer_clause(Arbre A){
-    Liste c = (Liste) malloc(sizeof(Clause));
+Clause* creer_clause(Arbre A){
+    Clause* c = (Clause*) malloc(sizeof(Clause));
     c->a = A;
     c->suivant = NULL;
     return c;
+}
+
+void init_liste(Liste* list){
+    if (list == NULL){
+        return;
+    }
+    list->longueur = 0;
+    list->tete = NULL;
+    list->queue = NULL;
 }
 
 void ajouter_clause(Liste* list, Clause* cl){
     if (list == NULL || cl == NULL){
         return;
     }
-    if (list->queue == NULL){
+    if (list->longueur == 0){
+        list->tete = cl;
+    } else if (list->tete == NULL || list->queue == NULL){
         return;
+    } else {
+        list->queue->suivant = cl;
     }
-    list->queue->suivant = cl;
     list->queue = cl;
     list->longueur++;
 }
@@ -70,10 +86,16 @@ void ajouter_liste(Liste* list, Liste cls){
     if (list == NULL){
         return;
     }
-    if (list->queue == NULL || cls.tete == NULL){
+    if (cls.longueur == 0 || cls.tete == NULL || cls.queue == NULL){
         return;
     }
-    list->queue->suivant = cls.tete;
+    if (list->longueur == 0){
+        list->tete = cls.tete;
+    } else if (list->tete == NULL || list->queue == NULL){
+        return;
+    } else {
+        list->queue->suivant = cls.tete;
+    }
     list->queue = cls.queue;
     list->longueur += cls.longueur;
 }
