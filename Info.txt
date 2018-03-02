@@ -33,3 +33,18 @@ Format de la grille en entrée:
 ----------------------------------
 
 
+Exemple de création de l'arbre correspondant à la règle Vij :
+
+Règle Vij:
+    Arbre V
+    Pour x de 1 à n
+        Arbre C
+        Pour y de 1 à n
+            Si x = y
+                Variable var(i,j,y,0)   // Variable normale
+            Sinon
+                Variable var(i,j,y,1)   // Négation de la variable
+            conjonction(C,var)
+        disjonction(V,C)
+    retourner V
+                
