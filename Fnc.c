@@ -29,18 +29,39 @@ int fnc(Arbre A){
             } else if (g == 0 && d == 1){
                 Liste lc_d = clauses(A->droit);
                 Arbre Ag = A->gauche;
-                Clause* cl = lc_d.tete;
-                while (cl != NULL){
-                    Arbre Af = creer_disjonction(Ag, cl->a);
-                    A = creer_conjonction(A, Af);
-                    cl = cl->suivant;
+                A = NULL;
+                Clause* c = lc_d.tete;
+                while (c != NULL){
+                    Arbre D = creer_disjonction(Ag, c->a);
+                    A = creer_conjonction(A, D);
+                    c = c->suivant;
                 }
                 return 1;
             } else if (g == 1 && d == 0){
-                
+                Liste lc_g = clauses(A->gauche);
+                Arbre Ad = A->droit;
+                A = NULL;
+                Clause* c = lc_g.tete;
+                while (c != NULL){
+                    Arbre D = creer_disjonction(Ad, c->a);
+                    A = creer_conjonction(A, D);
+                    c = c->suivant;
+                }
                 return 1;
             } else if (g == 1 && d == 1){
-                
+                Liste lc_g = clauses(A->gauche);
+                Liste lc_d = clauses(A->droit);
+                A = NULL;
+                Clause* cg = lc_g.tete;
+                while (cg != NULL){
+                    Clause* cd = lc_d.tete;
+                    while (cd != NULL){
+                        Arbre D = creer_disjonction(cg->a, cd->a);
+                        A = creer_conjonction(A, D);
+                        cd = cd->suivant;
+                    }
+                    cg = cg->suivant;
+                }
                 return 1;
             } else {
                 return -1;
