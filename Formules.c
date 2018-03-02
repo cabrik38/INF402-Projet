@@ -11,6 +11,11 @@ Arbre creer_variable(int i, int j, int k, int neg){
 }
 
 Arbre creer_conjonction(Arbre A1, Arbre A2){
+    if (A1 == NULL){
+        return A2;
+    } else if (A2 == NULL){
+        return A1;
+    }
     Arbre n = creer_noeud();
     n->lex.nature = CONJONCTION;
     n->gauche = A1;
@@ -19,6 +24,11 @@ Arbre creer_conjonction(Arbre A1, Arbre A2){
 }
 
 Arbre creer_disjonction(Arbre A1, Arbre A2){
+    if (A1 == NULL){
+        return A2;
+    } else if (A2 == NULL){
+        return A1;
+    }
     Arbre n = creer_noeud();
     n->lex.nature = DISJONCTION;
     n->gauche = A1;
