@@ -16,15 +16,16 @@ typedef struct Liste {
 
 /* --------------------
     fnc(A)
-    Transforme une formule (exprimée sous la forme d'un arbre A) en forme normale conjonctive FNC.
-    Renvoie: -  1 si la formule obtenue est une FNC (avec au moins une conjonction)
-             -  0 s'il s'agit d'une clause (ou d'un littéral isolé).
-             - -1 en cas d'erreur
+    > Transforme une formule (exprimée sous la forme d'un arbre A) en forme normale conjonctive FNC.
+      Renvoie: -  1 si la formule obtenue est une FNC (avec au moins une conjonction)
+               -  0 s'il s'agit d'une clause (ou d'un littéral isolé).
+               - -1 en cas d'erreur
    -------------------- */
 int fnc(Arbre A);
+
 /* --------------------
     clauses(A)
-    Renvoie la liste des clauses d'une FNC (exprimée sous la forme d'un arbre A).
+    > Renvoie la liste des clauses d'une FNC (exprimée sous la forme d'un arbre A).
    -------------------- */
 Liste clauses(Arbre A);
 
