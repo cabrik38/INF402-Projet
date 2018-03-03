@@ -1,5 +1,7 @@
 #include "Fnc.h"
 
+#include <stdlib.h>
+
 int fnc(Arbre A){
     if (A == NULL){
         return -1;
