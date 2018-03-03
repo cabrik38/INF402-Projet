@@ -52,28 +52,41 @@ Arbre arbre4(){
 }
 
 int main(int argc, char** argv){
-    Arbre A1 = arbre1();
+    Arbre A1 = NULL;
+    Arbre A2 = NULL;
+    Arbre A3 = NULL;
+    Arbre A4 = NULL;
+    Arbre A5 = NULL;
+    Arbre A6 = NULL;
+    Arbre A7 = NULL;
+    
+    A1 = arbre1();
     afficher_formule(A1);
     
-    Arbre A2 = arbre2();
+    A2 = arbre2();
     afficher_formule(A2);
     /*
-    Arbre A3 = arbre3();
+    A3 = arbre3();
     afficher_formule(A3);
     
-    Arbre A4 = arbre4();
+    A4 = arbre4();
     afficher_formule(A4);
     
-    Arbre A5 = creer_disjonction(A1,A2);
+    A5 = creer_disjonction(A1,A2);
     afficher_formule(A5);
     
-    Arbre A6 = creer_conjonction(A5,A3);
+    A6 = creer_conjonction(A5,A3);
     afficher_formule(A6);
     
-    Arbre A7 = creer_disjonction(A4,A6);
+    A7 = creer_disjonction(A4,A6);
     afficher_formule(A7);
     */
     
-    liberer_arbre(A1);
+    liberer_arbre(A7);
+    liberer_arbre(A6);
+    liberer_arbre(A5);
+    liberer_arbre(A4);
+    liberer_arbre(A3);
     liberer_arbre(A2);
+    liberer_arbre(A1);
 }
