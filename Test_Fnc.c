@@ -108,8 +108,8 @@ int main(int argc, char** argv){
     afficher_liste(L2);    
 #endif
 
-    liberer_liste(L2);
-    liberer_liste(L1);
+    vider_liste(&L2);
+    vider_liste(&L1);
     liberer_arbre(A3);
     liberer_arbre(A2);
     liberer_arbre(A1);
