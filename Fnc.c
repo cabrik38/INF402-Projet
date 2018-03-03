@@ -136,3 +136,14 @@ void ajouter_liste(Liste* list, Liste cls){
     list->queue = cls.queue;
     list->longueur += cls.longueur;
 }
+
+void vider_liste(Liste* L){
+    Clause* c = L->tete;
+    Clause* next = NULL;
+    while (c != NULL){
+        next = c->suivant;
+        free(c);
+        c = next;
+    }
+    init_liste(L);
+}
