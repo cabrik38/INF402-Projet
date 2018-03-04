@@ -33,8 +33,6 @@ Clause* creer_clause(Arbre A);
 void init_liste(Liste* L);
 void ajouter_clause(Liste* L, Clause* C);
 void ajouter_liste(Liste* L, Liste Cs);
-#if 0
 void vider_liste(Liste* L);
-#endif
 
 #endif
