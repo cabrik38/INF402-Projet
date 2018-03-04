@@ -33,6 +33,7 @@ int fnc(Arbre A){
                     A = creer_conjonction(A, D);
                     c = c->suivant;
                 }
+                vider_liste(lc_d);
                 return 1;
             } else if (g == 1 && d == 0){
                 /* A = G1...Gn + D      où Gi et D sont des clauses 
@@ -46,6 +47,7 @@ int fnc(Arbre A){
                     A = creer_conjonction(A, D);
                     c = c->suivant;
                 }
+                vider_liste(lc_g);
                 return 1;
             } else if (g == 1 && d == 1){
                 /* A = G1...Gn + D1...Dn      où Gi et Di sont des clauses 
@@ -63,6 +65,8 @@ int fnc(Arbre A){
                     }
                     cg = cg->suivant;
                 }
+                vider_liste(lc_g);
+                vider_liste(lc_d);
                 return 1;
             } else {
                 /* Erreur lors de la transformation en FNC du sous-arbre gauche ou droit */
