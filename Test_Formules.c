@@ -108,4 +108,5 @@ int main(int argc, char** argv){
 	liberer_arbre(A2);  printf("A2 effacer\n");
 	liberer_arbre(A1);  printf("A1 effacer\n");
 #endif
+	return 0;
 }
