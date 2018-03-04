@@ -45,10 +45,9 @@ void afficher_liste(Liste L){
     printf("Liste a %d elements\n", L.longueur);
     Clause* c = L.tete;
     int i = 0;
-    for (c != NULL){
+    while (c != NULL){
         printf("L[%d]: C = ", i);
         afficher_formule(c->a);
-        printf("\n");
         i++;
         c = c->suivant;
     }
@@ -162,7 +161,6 @@ int main(int argc, char** argv){
     ajouter_clause(&L1, C2);
     afficher_liste(L1);
     
-#if 0
     /* --- Test ajouter_liste() --- */
     printf("Test ajouter_liste()\n");
     
@@ -251,14 +249,13 @@ int main(int argc, char** argv){
     int f10 = fnc(A10);
     printf("FNC %d : ", f10);
     afficher_formule(A10);
-#endif
 
+#if 0
     vider_liste(&L5);
     vider_liste(&L4);
     vider_liste(&L3);
     vider_liste(&L2);
     vider_liste(&L1);
-#if 0
     liberer_arbre(A10);
     liberer_arbre(A9);
     liberer_arbre(A8);
