@@ -2,25 +2,27 @@
 
 #include <stdlib.h>
 
-int fnc(Arbre A){
+int fnc(Arbre* F){
+    Arbre A = *F;
+    int return_value;
     if (A == NULL){
         return -1;
     }
     if (A->lex.nature == VARIABLE || A->lex.nature == TOP || A->lex.nature == BOTTOM){
         /* Si la formule est un littéral isolé, la fonction renvoie 0. */
-        return 0;
+        return_value = 0;
     } else {
         /* Si la formule est complexe (plusieurs littéraux), les sous-arbres gauche et droit sont transformés en FNC. */
-        int g = fnc(A->gauche);
-        int d = fnc(A->droit);
+        int g = fnc(&(A->gauche));
+        int d = fnc(&(A->droit));
         if (A->lex.nature == CONJONCTION){
             /* Si la racine de l'arbre A est une conjonction, la formule est déjà une FNC. */
-            return 1;
+            return_value = 1;
         } else {
             /* Si la racine de l'arbre A est une disjonction : */
             if (g == 0 && d == 0){
                 /* Si les sous-arbres gauche et droit représentent des clauses, alors l'arbre A représente une clause. */
-                return 0;
+                return_value = 0;
             } else if (g == 0 && d == 1){
                 /* A = G + D1...Dn      où G et Di sont des clauses
                    A = (G + D1).(G + D2)...(G + Dn) */
@@ -33,10 +35,12 @@ int fnc(Arbre A){
                     A = creer_conjonction(A, D);
                     c = c->suivant;
                 }
+#if 0
                 vider_liste(lc_d);
-                return 1;
+#endif
+                return_value = 1;
             } else if (g == 1 && d == 0){
-                /* A = G1...Gn + D      où Gi et D sont des clauses 
+                /* A = G1...Gn + D      où Gi et D sont des clauses
                    A = (G1 + D).(G2 + D)...(Gn + D) */
                 Liste lc_g = clauses(A->gauche);
                 Arbre Ad = A->droit;
@@ -47,10 +51,12 @@ int fnc(Arbre A){
                     A = creer_conjonction(A, D);
                     c = c->suivant;
                 }
+#if 0
                 vider_liste(lc_g);
-                return 1;
+#endif
+                return_value = 1;
             } else if (g == 1 && d == 1){
-                /* A = G1...Gn + D1...Dn      où Gi et Di sont des clauses 
+                /* A = G1...Gn + D1...Dn      où Gi et Di sont des clauses
                    A = (G1 + D1)...(G1 + Dn).(G2 + D1)...(G2 + Dn)...(Gn + Dn) */
                 Liste lc_g = clauses(A->gauche);
                 Liste lc_d = clauses(A->droit);
@@ -65,22 +71,26 @@ int fnc(Arbre A){
                     }
                     cg = cg->suivant;
                 }
+#if 0
                 vider_liste(lc_g);
                 vider_liste(lc_d);
-                return 1;
+#endif
+                return_value = 1;
             } else {
                 /* Erreur lors de la transformation en FNC du sous-arbre gauche ou droit */
                 return -1;
             }
         }
     }
+    *F = A;
+    return return_value;
 }
 
 Liste clauses(Arbre A){
-    List list;
+    Liste list;
     init_liste(&list);
     if (A != NULL){
-        if (A->lex.nature != DISJONCTION){
+        if (A->lex.nature != CONJONCTION){
             /* Si A est une clause ou un littéral isolé, la clause créée à partir de A est ajoutée à la liste */
             ajouter_clause(&list, creer_clause(A));
         } else {
@@ -141,6 +151,7 @@ void ajouter_liste(Liste* L, Liste Cs){
     L->longueur += Cs.longueur;
 }
 
+#if 0
 void vider_liste(Liste* L){
     Clause* c = L->tete;
     Clause* next = NULL;
@@ -151,3 +162,4 @@ void vider_liste(Liste* L){
     }
     init_liste(L);
 }
+#endif
