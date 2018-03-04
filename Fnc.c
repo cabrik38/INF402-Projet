@@ -35,9 +35,7 @@ int fnc(Arbre* F){
                     A = creer_conjonction(A, D);
                     c = c->suivant;
                 }
-#if 0
-                vider_liste(lc_d);
-#endif
+                vider_liste(&lc_d);
                 return_value = 1;
             } else if (g == 1 && d == 0){
                 /* A = G1...Gn + D      où Gi et D sont des clauses
@@ -51,9 +49,7 @@ int fnc(Arbre* F){
                     A = creer_conjonction(A, D);
                     c = c->suivant;
                 }
-#if 0
-                vider_liste(lc_g);
-#endif
+                vider_liste(&lc_g);
                 return_value = 1;
             } else if (g == 1 && d == 1){
                 /* A = G1...Gn + D1...Dn      où Gi et Di sont des clauses
@@ -71,10 +67,8 @@ int fnc(Arbre* F){
                     }
                     cg = cg->suivant;
                 }
-#if 0
-                vider_liste(lc_g);
-                vider_liste(lc_d);
-#endif
+                vider_liste(&lc_g);
+                vider_liste(&lc_d);
                 return_value = 1;
             } else {
                 /* Erreur lors de la transformation en FNC du sous-arbre gauche ou droit */
@@ -151,7 +145,6 @@ void ajouter_liste(Liste* L, Liste Cs){
     L->longueur += Cs.longueur;
 }
 
-#if 0
 void vider_liste(Liste* L){
     Clause* c = L->tete;
     Clause* next = NULL;
@@ -162,4 +155,3 @@ void vider_liste(Liste* L){
     }
     init_liste(L);
 }
-#endif
