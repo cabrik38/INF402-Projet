@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "Formules.h"
 #include "Fnc.h"
@@ -12,15 +13,15 @@ void afficher_formule_rec(Arbre A){
         }
     } else if (A->lex.nature == CONJONCTION){
         printf("(");
-        afficher_formule(A->gauche);
+        afficher_formule_rec(A->gauche);
         printf(" * ");
-        afficher_formule(A->droit);
+        afficher_formule_rec(A->droit);
         printf(")");
     } else if (A->lex.nature == DISJONCTION){
         printf("(");
-        afficher_formule(A->gauche);
+        afficher_formule_rec(A->gauche);
         printf(" + ");
-        afficher_formule(A->droit);
+        afficher_formule_rec(A->droit);
         printf(")");
     } else {
         printf("T");
@@ -151,81 +152,100 @@ int main(int argc, char** argv){
     Clause* C3 = creer_clause(A3);
     
     /* --- Test ajouter_clause() --- */
+    printf("Test ajouter_clause()\n");
     
+    printf("L1.1: ");
     ajouter_clause(&L1, C1);
     afficher_liste(L1);
     
+    printf("L1.2: ");
     ajouter_clause(&L1, C2);
     afficher_liste(L1);
     
 #if 0
     /* --- Test ajouter_liste() --- */
+    printf("Test ajouter_liste()\n");
     
     Clause* C4 = creer_clause(A3);
     Clause* C5 = creer_clause(A1);
     
+    printf("L2.1: ");
     ajouter_clause(&L2, C4);
     afficher_liste(L2);
     
+    printf("L2.2: ");
     ajouter_clause(&L2, C5);
     afficher_liste(L2);
     
+    printf("L2.3: ");
     ajouter_liste(&L2, L1);
     afficher_liste(L2);
     
     /* --- Test clauses() --- */
+    printf("Test clauses()\n");
     
+    printf("L3: ");
     A4 = arbre4();
     L3 = clauses(A4);
     afficher_liste(L3);
     
+    printf("L4: ");
     A5 = arbre5();
     L4 = clauses(A5);
     afficher_liste(L4);
     
+    printf("L5: ");
     A6 = arbre6();
     L5 = clauses(A6);
     afficher_liste(L5);
     
     /* --- Test fnc() --- */
+    printf("Test fnc()\n");
     
     // Littéral isolé
+    printf("A1 = ");
     afficher_formule(A1);
     int f1 = fnc(A1);
     printf("FNC %d : ", f1);
     afficher_formule(A1);
     
     // Clause
+    printf("A3 = ");
     afficher_formule(A3);
     int f3 = fnc(A3);
     printf("FNC %d : ", f3);
     afficher_formule(A3);
     
     // FNC
+    printf("A4 = ");
     afficher_formule(A4);
     int f4 = fnc(A4);
     printf("FNC %d : ", f4);
     afficher_formule(A4);
     
     // A transformer
+    printf("A7 = ");
     A7 = arbre7();
     afficher_formule(A7);
     int f7 = fnc(A7);
     printf("FNC %d : ", f7);
     afficher_formule(A7);
     
+    printf("A8 = ");
     A8 = arbre8();
     afficher_formule(A8);
     int f8 = fnc(A8);
     printf("FNC %d : ", f8);
     afficher_formule(A8);
     
+    printf("A9 = ");
     A9 = arbre9();
     afficher_formule(A9);
     int f9 = fnc(A9);
     printf("FNC %d : ", f9);
     afficher_formule(A9);
     
+    printf("A10 = ");
     A10 = arbre10();
     afficher_formule(A10);
     int f10 = fnc(A10);
@@ -238,6 +258,7 @@ int main(int argc, char** argv){
     vider_liste(&L3);
     vider_liste(&L2);
     vider_liste(&L1);
+#if 0
     liberer_arbre(A10);
     liberer_arbre(A9);
     liberer_arbre(A8);
@@ -248,4 +269,6 @@ int main(int argc, char** argv){
     liberer_arbre(A3);
     liberer_arbre(A2);
     liberer_arbre(A1);
+#endif
+    return 0;
 }
