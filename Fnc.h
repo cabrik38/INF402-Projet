@@ -21,7 +21,7 @@ typedef struct Liste {
                -  0 s'il s'agit d'une clause (ou d'un littéral isolé).
                - -1 en cas d'erreur
    -------------------- */
-int fnc(Arbre A);
+int fnc(Arbre* F);
 
 /* --------------------
     clauses(A)
@@ -33,6 +33,8 @@ Clause* creer_clause(Arbre A);
 void init_liste(Liste* L);
 void ajouter_clause(Liste* L, Clause* C);
 void ajouter_liste(Liste* L, Liste Cs);
-void vider_liste(Liste* L)
+#if 0
+void vider_liste(Liste* L);
+#endif
 
 #endif
