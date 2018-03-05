@@ -29,7 +29,7 @@ Arbre regle_ligne(int i,int k, int n){
   Arbre P=NULL;
     for(int x=0;x<n;x++){
         if(x==i){var=creer_variable(i,x,k,1);}
-        else{var=creer_variable(i,x,i,0);}
+        else{var=creer_variable(i,x,k,0);}
       P=creer_conjonction(P,var);
     }
     L=creer_disjonction(L,P);
@@ -43,7 +43,7 @@ Arbre regle_colonne(int j,int k, int n){
   for(int y=1;y<n+1;y++){
   {
     if (y==j) {var=creer_variable(y,j,k,1);}
-    else{var=creer_variable(y,j,j,0);}
+    else{var=creer_variable(y,j,k,0);}
     P=creer_conjonction(P,var);
   }
   C=creer_disjonction(C,P);
