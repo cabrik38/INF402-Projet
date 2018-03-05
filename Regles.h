@@ -33,10 +33,4 @@ Arbre regle_sup(int a, int b, int c, int d, int n);
    ------------------------------ */
 Arbre regle_valeur(int i, int j, int k);
 
-/* ------------------------------
-    case_libre(int i, int j)
-    > Renvoie 0 si la case est libre sinon la valeur qu'il y a dans la case;
-   ------------------------------ */
-int case_libre(int i, int j,int case[n][n+1]);
-
 #endif
