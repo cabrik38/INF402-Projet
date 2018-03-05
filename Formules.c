@@ -1,5 +1,7 @@
 #include "Formules.h"
 
+#include <stdlib.h>
+
 Arbre creer_variable(int i, int j, int k, int neg){
     Arbre n = creer_noeud();
     n->lex.nature = VARIABLE;
