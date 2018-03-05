@@ -37,7 +37,7 @@ Arbre regle_ligne(int i,int k, int n){
 }
 
 Arbre regle_colonne(int j,int k, int n){
-  Arbre L=NULL;
+  Arbre C=NULL;
   Arbre var;
   Arbre P=NULL;
   for(int y=1;y<n+1;y++){
@@ -46,12 +46,20 @@ Arbre regle_colonne(int j,int k, int n){
     else{var=creer_variable(y,j,j,0);}
     P=creer_conjonction(P,var);
   }
-  L=creer_disjonction(L,P);
-  return L;
+  C=creer_disjonction(C,P);
+  return C;
 }
 
-Arbre regle_sup(int a, int b, int c, int d){
-
+Arbre regle_sup(int a, int b, int c, int d,int n){
+  Arbre P=NULL;
+  Arbre S=NULL;
+  for(int i=2;i<=n;i++){
+    for(int j=1;j<i;j++){
+        P=creer_conjonction(creer_variable(a,b,i,0),creer_variable(c,d,j,0));
+        S=creer_disjonction(S,P);
+    }
+  }
+  return S;
 }
 
 Arbre regle_valeur(int i, int j, int k){
