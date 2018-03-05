@@ -9,12 +9,11 @@ Transposition des règles du jeu en logique :
 - Case (a,b) supérieure à la case (c,d) :        S? = Xab2.Xcd1 + Xab3.Xcd2 + Xab3.Xcd1 + ... + Xabn.Xcd(n-1) + ... + Xabn.Xcd1       [p]
 - Valeur k de la case (i,j) donnée de base:     B? = Xijk                                                                            [q]
 
-=> Faire la conjonction de toutes les règles : F = V11.V12...V1n.V21...Vnn.L1...Ln.C1...Cn.S1...Sp.B1...Bq
+=> Faire la conjonction de toutes les règles : F = V11.V12...V1n.V21...Vnn.L11...L1n...Lnn.C11...C1n...Cnn.S1...Sp.B1...Bq
 
 
 Etapes:
 1) Lecture de la grille dans un fichier d'entrée
-   Création d'un objet Grille ?
 2) Création de l'arbre contenant la conjonction de toutes le règles (noté F ci-dessus)
 3) Transformation de la formule (arbre) en forme normale conjonctive FNC (produit de clauses)
 4) Ecriture du fichier de sortie explicitant chaque clause de la FNC
