@@ -1,11 +1,6 @@
 #include "Regles.h"
 
-int case_libre(int i, int j,int case[n][n]){
-  if(case[i][j]==0){return 0;}
-  else{return case[i][j];}
-  return 2;
-}
-
+#include <stdlib.h>
 
 Arbre regle_case(int i, int j, int n){
   Arbre V = NULL;
