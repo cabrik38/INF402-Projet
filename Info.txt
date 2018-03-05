@@ -4,10 +4,10 @@ Xijk : variable de la case (i,j) pour la valeur particulière k
 
 Transposition des règles du jeu en logique :
 - Une seule valeur par case :                   Vij = Xij1./Xij2.../Xijn + /Xij1.Xij2./Xij3.../Xijn + ... + /Xij1./Xij2...Xijn        [n²]
-- Une seule même valeur k par ligne i :          Li = Xi1k./Xi2k.../Xink + ... + /Xi1k./Xi2k...Xink                                   [n]
-                            colonne j :          Cj = X1jk./X2jk.../Xnjk + ... + /X1jk./X2jk...Xnjk                                   [n]
+- Une seule même valeur k par ligne i :         Lik = Xi1k./Xi2k.../Xink + ... + /Xi1k./Xi2k...Xink                                   [n]
+                            colonne j :         Cjk = X1jk./X2jk.../Xnjk + ... + /X1jk./X2jk...Xnjk                                   [n]
 - Case (a,b) supérieure à la case (c,d) :        S? = Xab2.Xcd1 + Xab3.Xcd2 + Xab3.Xcd1 + ... + Xabn.Xcd(n-1) + ... + Xabn.Xcd1       [p]
-- Valeur k de la case (i,j) donnée de base :     B? = Xijk                                                                            [q]
+- Valeur k de la case (i,j) donnée de base:     B? = Xijk                                                                            [q]
 
 => Faire la conjonction de toutes les règles : F = V11.V12...V1n.V21...Vnn.L1...Ln.C1...Cn.S1...Sp.B1...Bq
 
@@ -26,9 +26,9 @@ Format de la grille en entrée:
 0 0<0 0     // <,>,V,^ : caractères d'inégalité
   ^         // Cases sans valeur par défaut = 0
 1 0 0 0
-    V  
+    V
 0 0>0>0
-^      
+^
 0 0 3 0
 ----------------------------------
 
@@ -47,4 +47,3 @@ Règle Vij:
             conjonction(C,var)
         disjonction(V,C)
     retourner V
-                

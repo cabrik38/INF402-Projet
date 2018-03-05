@@ -4,7 +4,7 @@
 /* -----------------------------------------------------------
     (x, y) = coordonnées de la variable sur la grille
     k = valeur particulière de la case (de 1 à n)
-    N = 1 s'il s'agit de la négation de la variable, 0 sinon 
+    N = 1 s'il s'agit de la négation de la variable, 0 sinon
    ----------------------------------------------------------- */
 typedef struct Variable {
     int x;
@@ -37,14 +37,14 @@ Arbre creer_variable(int i, int j, int k, int neg);
 
 /* --------------------
     creer_conjonction(A1,A2)
-    > Renvoie l'arbre constitué de la conjonction des arbres A1 et A2 
+    > Renvoie l'arbre constitué de la conjonction des arbres A1 et A2
       La racine de l'arbre est une CONJONCTION et ses enfants gauche et droit sont respectivement A1 et A2.
    -------------------- */
 Arbre creer_conjonction(Arbre A1, Arbre A2);
 
 /* --------------------
     creer_disjonction(A1,A2)
-    > Renvoie l'arbre constitué de la disjonction des arbres A1 et A2 
+    > Renvoie l'arbre constitué de la disjonction des arbres A1 et A2
       La racine de l'arbre est une DISJONCTION et ses enfants gauche et droit sont respectivement A1 et A2.
    -------------------- */
 Arbre creer_disjonction(Arbre A1, Arbre A2);
