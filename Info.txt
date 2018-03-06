@@ -25,7 +25,7 @@ Format de la grille en entrée:
 0 0<0 0     // <,>,V,^ : caractères d'inégalité
   ^         // Cases sans valeur par défaut = 0
 1 0 0 0
-    V
+    v
 0 0>0>0
 ^
 0 0 3 0
