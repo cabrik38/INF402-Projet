@@ -22,7 +22,7 @@ Etapes:
 Format de la grille en entrée:
 ----------------------------------
 4           // taille de la grille
-0 0<0 0     // <,>,V,^ : caractères d'inégalité
+0 0<0 0     // <,>,v,^ : caractères d'inégalité
   ^         // Cases sans valeur par défaut = 0
 1 0 0 0
     v
