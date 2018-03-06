@@ -62,5 +62,5 @@ int numero_variable(Variable V, int n){
 }
 
 int nombre_variables(int n){
-    return n * 100 + n * 10 + n;
+    return (n-1)*n*n + (n-1)*n + n;
 }
