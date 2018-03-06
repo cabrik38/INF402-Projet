@@ -18,24 +18,24 @@ Arbre Lecture_grille(char* nom_fichier){
     Arbre Ri = null;
 
     if (grille != NULL) {
-        n=fgetc(grille);
+        n=fgetc(grille);                                        // Convertir le char en int ('0' =/= 0)
 
-        while ((caractere = fgetc(grille)) != EOF){
+        while ((caractere = fgetc(grille)) != EOF){             // Pas besoin de ça
             for(y=0; y<n; y++){
                 for(x=0; x<n;x++){
                     caractere = fgetc(grille);
-                    Ri = regle_valeur(x, y, caractere);
+                    Ri = regle_valeur(x, y, caractere);         // regle_valeur seulement si le caractère n'est pas 0
                     F = creer_conjonction(F, Ri);
                     caractere = fgetc(grille);
                     switch (caractere){
                         case " ":
                             break;
                         case"<":
-                            Ri=regle_sup(x+1,y,x,y);
+                            Ri=regle_sup(x+1,y,x,y);            // sup() prend un 5e param : la taille de la grille n
                             F=creer_conjonction(F,Ri);
                             break;
                         case ">":
-                            Ri = regle_sup(x,y,x+1,y);
+                            Ri = regle_sup(x,y,x+1,y);          // sup() prend un 5e param : la taille de la grille n
                             F=creer_conjonction(F,Ri);
                             break;
 
@@ -47,4 +47,4 @@ Arbre Lecture_grille(char* nom_fichier){
         }
         fclose(grille);
     }
-};
+}
