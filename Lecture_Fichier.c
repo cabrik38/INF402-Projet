@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "Regles.h
+#include "Regles.h"
 
 Arbre Lecture_grille(char* nom_fichier){
     int i, n;
