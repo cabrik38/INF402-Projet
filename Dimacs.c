@@ -1,27 +1,26 @@
 #include "Dimacs.h"
 
 #include <stdlib.h>
-#include <stdio.h>
 
-void generer_dimacs(Arbre A, char* nom_fichier){
-    File* F = NULL;
+void generer_dimacs(Arbre A, char* nom_fichier, int n){
+    FILE* F = NULL;
     F = fopen(nom_fichier, "w+");
-    
+
     int fnc_res = fnc(&A);
     if (fnc_res == -1){
         printf("Erreur lors de la transformation en FNC\n");
         return;
     }
     Liste L = clauses(A);
-        
+
     fprintf(F, "p cnf %d %d\n", nombre_variables(n), L.longueur);
-    
+
     Clause* c = L.tete;
     while (c != NULL){
         ecrire_clause(c, F, n);
         c = c->suivant;
     }
-    
+
     fclose(F);
 }
 
