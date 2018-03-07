@@ -5,11 +5,9 @@
 #ifndef INF402_PROJET_LECTURE_FICHIER_H
 #define INF402_PROJET_LECTURE_FICHIER_H
 
-void Lecture_grille(char* nom_fichier);
+#include "Formules.h"
 
+Arbre Lecture_grille(char* nom_fichier, int* pn);
 
 
 #endif //INF402_PROJET_LECTURE_FICHIER_H
-
-
-
