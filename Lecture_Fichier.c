@@ -44,7 +44,6 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
             for(x=0; x<n;x++){
                 caractere = fgetc(grille);
                 if (caractere > '0' && caractere <= '9'){
-                    //printf("%d-%d: %c\n", y, x, caractere);
                     int k = caractere - '0';
                     Ri = regle_valeur(x, y, k);
                     F = creer_conjonction(F, Ri);
@@ -66,18 +65,15 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
             }
             for(x=0; x<n; x++){
                 caractere = fgetc(grille);
-                        printf("(%d,%d):%c.\n", x, y, caractere);
                 switch (caractere){
                     case ' ':
                         break;
                     case'^':
-                        printf("^%d%d\n", x, y);
                         Ri=regle_sup(x,y+1,x,y,n);
                         F=creer_conjonction(F,Ri);
                         break;
                     case 'v':
                     case 'V':
-                        printf("v%d%d\n", x, y);
                         Ri = regle_sup(x,y,x,y+1,n);
                         F=creer_conjonction(F,Ri);
                         break;
