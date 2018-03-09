@@ -3,9 +3,9 @@ Xijk : variable de la case (i,j) pour la valeur particulière k
 /Xijk : négation de la variable Xijk
 
 Transposition des règles du jeu en logique :
-- Une seule valeur par case :                   Vij = Xij1./Xij2.../Xijn + /Xij1.Xij2./Xij3.../Xijn + ... + /Xij1./Xij2...Xijn        [n²]
-- Une seule même valeur k par ligne i :         Lik = Xi1k./Xi2k.../Xink + ... + /Xi1k./Xi2k...Xink                                   [n²]
-                            colonne j :         Cjk = X1jk./X2jk.../Xnjk + ... + /X1jk./X2jk...Xnjk                                   [n²]
+- Une seule valeur par case :                   Vij = Xij1./Xij2.../Xijn + /Xij1.Xij2./Xij3.../Xijn + ... + /Xij1./Xij2...Xijn    [n²]
+- Une seule même valeur k par colonne i :       Cik = Xi1k./Xi2k.../Xink + ... + /Xi1k./Xi2k...Xink                               [n²]
+                                ligne j :       Ljk = X1jk./X2jk.../Xnjk + ... + /X1jk./X2jk...Xnjk                               [n²]
 - Case (a,b) supérieure à la case (c,d) :        S? = Xab2.Xcd1 + Xab3.Xcd2 + Xab3.Xcd1 + ... + Xabn.Xcd(n-1) + ... + Xabn.Xcd1       [p]
 - Valeur k de la case (i,j) donnée de base:     B? = Xijk                                                                            [q]
 
