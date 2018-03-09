@@ -17,31 +17,31 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
     Arbre Ri = NULL;
 
     if (grille != NULL) {
-        n=fgetc(grille)-'0';
+        n = fgetc(grille)-'0';
         *pn = n;
 
-        for(y=0;y<n;y++){
-            for(x=0;x<n;x++){
+        for(y=0; y<n; y++){
+            for(x=0; x<n; x++){
                 Ri = regle_case(x,y,n);
                 F = creer_conjonction(F, Ri);
             }
         }
-        for(y=0;y<n;y++){
-            for(x=1;x<=n;x++){
-                Ri = regle_ligne(y,x,n);
+        for(y=0; y<n; y++){
+            for(x=1; x<=n; x++){
+                Ri = regle_colonne(y,x,n);
                 F = creer_conjonction(F, Ri);
             }
         }
-        for(y=0;y<n;y++){
-            for(x=1;x<=n;x++){
-                Ri = regle_colonne(y,x,n);
+        for(y=0; y<n; y++){
+            for(x=1; x<=n; x++){
+                Ri = regle_ligne(y,x,n);
                 F = creer_conjonction(F, Ri);
             }
         }
         fgetc(grille);
 
         for(y=0; y<n; y++){
-            for(x=0; x<n;x++){
+            for(x=0; x<n; x++){
                 caractere = fgetc(grille);
                 if (caractere > '0' && caractere <= '9'){
                     int k = caractere - '0';
