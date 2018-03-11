@@ -53,12 +53,12 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
                     case ' ':
                         break;
                     case'<':
-                        Ri=regle_sup(x+1,y,x,y,n);
-                        F=creer_conjonction(F,Ri);
+                        Ri = regle_sup(x+1,y,x,y,n);
+                        F = creer_conjonction(F,Ri);
                         break;
                     case '>':
                         Ri = regle_sup(x,y,x+1,y,n);
-                        F=creer_conjonction(F,Ri);
+                        F = creer_conjonction(F,Ri);
                         break;
 
                 }
@@ -69,13 +69,13 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
                     case ' ':
                         break;
                     case'^':
-                        Ri=regle_sup(x,y+1,x,y,n);
-                        F=creer_conjonction(F,Ri);
+                        Ri = regle_sup(x,y+1,x,y,n);
+                        F = creer_conjonction(F,Ri);
                         break;
                     case 'v':
                     case 'V':
                         Ri = regle_sup(x,y,x,y+1,n);
-                        F=creer_conjonction(F,Ri);
+                        F = creer_conjonction(F,Ri);
                         break;
 
                 }
