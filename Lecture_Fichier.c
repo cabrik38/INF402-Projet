@@ -11,6 +11,7 @@
 Arbre Lecture_grille(char* nom_fichier, int* pn){
     int i,x,y,n;
     char caractere;
+    char ligne[50];
     FILE *grille;
     grille = fopen(nom_fichier, "r");
     Arbre F = NULL;
@@ -42,7 +43,7 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
 
         for(y=0; y<n; y++){
             for(x=0; x<n; x++){
-                caractere = fgetc(grille);
+                //caractere = fgetc(grille);
                 if (caractere > '0' && caractere <= '9'){
                     int k = caractere - '0';
                     Ri = regle_valeur(x, y, k);
