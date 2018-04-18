@@ -64,7 +64,7 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
                             F = creer_conjonction(F, Ri);
                         }
                         x++;
-                    } esle if (ligne[i] == '<'){
+                    } else if (ligne[i] == '<'){
                         Ri = regle_sup(x+1,y,x,y,n);
                         F = creer_conjonction(F,Ri);
                     } else if (ligne[i] == '>'){
@@ -80,7 +80,7 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
                 while (x < n && ligne[i] != '\0'){
                     if (ligne[i] == '.'){
                         x++;
-                    } esle if (ligne[i] == 'v' || ligne[i] == 'V'){
+                    } else if (ligne[i] == 'v' || ligne[i] == 'V'){
                         Ri = regle_sup(x,y,x,y+1,n);
                         F = creer_conjonction(F,Ri);
                         x++;
