@@ -18,7 +18,11 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
     Arbre Ri = NULL;
 
     if (grille != NULL) {
-        n = fgetc(grille)-'0';
+        if (fgets(ligne, 50, grille) == NULL){
+            printf("Ligne manquante\n");
+            exit(-1);
+        }
+        n = ligne[0]-'0';
         if (n > 9 || n < 1){
             printf("La taille de la grille doit être comprise entre 1 et 9\n");
             exit(-1);
@@ -43,7 +47,6 @@ Arbre Lecture_grille(char* nom_fichier, int* pn){
                 F = creer_conjonction(F, Ri);
             }
         }
-        fgetc(grille);
 
         for(y=0; y<n*2-1; y++){
             if (fgets(ligne, 50, grille) == NULL){
