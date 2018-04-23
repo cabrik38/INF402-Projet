@@ -21,5 +21,6 @@ int estIdentique(Variable v1, Variable v2);
 int estNegation(Variable v1, Variable v2);
 int estValide(ListeVar* L);
 int contient(ListeVar* Lc, ListeVar* Lb);
+void reduire(Liste* H);
 
 #endif
