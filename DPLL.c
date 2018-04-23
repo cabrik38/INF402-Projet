@@ -88,3 +88,55 @@ int contient(ListeVar* Lc, ListeVar* Lb){
     }
     return 1;
 }
+
+void reduire(Liste* H){
+    if (H == NULL){ return; }
+    Clause* c = H->tete;
+    Clause* prec = NULL;
+    while (c != NULL){
+        ListeVar L;
+        init_listeVar(&L);
+        liste_variable(&L, c->a);
+        if (estValide(&L) == 1){
+            if (prec == NULL){
+                H->tete = c->suivant;
+                prec = H->tete;
+            } else {
+                prec->suivant = c->suivant;
+            }
+            c = c->suivant;
+            H->longueur--;
+        } else {
+            prec = c;
+            c = c->suivant;
+        }
+    }
+    c = H->tete;
+    while (c != NULL){
+        Clause* d = H->tete;
+        prec = NULL;
+        while (d != NULL){
+            if (d != c){
+                ListeVar Lc;
+                init_listeVar(&Lc);
+                liste_variable(&Lc, c->a);
+                ListeVar Ld;
+                init_listeVar(&Ld);
+                liste_variable(&Ld, d->a);
+                if (contient(Ld, Lc)){
+                    if (prec == NULL){
+                        H->tete = d->suivant;
+                    } else {
+                        prec->suivant = d->suivant;
+                    }
+                } else {
+                    prec = d;
+                }
+            } else {
+                prec = d;
+            }
+            d = d->suivant;
+        }
+        c = c->suivant;
+    }
+}
