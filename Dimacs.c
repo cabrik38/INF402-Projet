@@ -1,6 +1,7 @@
 #include "Dimacs.h"
 
 #include <stdlib.h>
+#include "DPLL.h"
 
 void generer_dimacs(Arbre A, char* nom_fichier, int n){
     FILE* F = NULL;
@@ -12,6 +13,7 @@ void generer_dimacs(Arbre A, char* nom_fichier, int n){
         return;
     }
     Liste L = clauses(A);
+    reduire(&L);
 
     fprintf(F, "p cnf %d %d\n", nombre_variables(n), L.longueur);
 
