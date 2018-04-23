@@ -1,6 +1,7 @@
 #include "Fnc.h"
 
 #include <stdlib.h>
+#include "DPLL.h"
 
 int fnc(Arbre *F){
     Arbre A = *F;
@@ -27,6 +28,7 @@ int fnc(Arbre *F){
                 /* A = G + D1...Dn      où G et Di sont des clauses
                    A = (G + D1).(G + D2)...(G + Dn) */
                 Liste lc_d = clauses(A->droit);
+                reduire(&lc_d);
                 Arbre Ag = A->gauche;
                 A = NULL;
                 Clause* c = lc_d.tete;
@@ -41,6 +43,7 @@ int fnc(Arbre *F){
                 /* A = G1...Gn + D      où Gi et D sont des clauses
                    A = (G1 + D).(G2 + D)...(Gn + D) */
                 Liste lc_g = clauses(A->gauche);
+                reduire(&lc_g);
                 Arbre Ad = A->droit;
                 A = NULL;
                 Clause* c = lc_g.tete;
@@ -55,7 +58,9 @@ int fnc(Arbre *F){
                 /* A = G1...Gn + D1...Dn      où Gi et Di sont des clauses
                    A = (G1 + D1)...(G1 + Dn).(G2 + D1)...(G2 + Dn)...(Gn + Dn) */
                 Liste lc_g = clauses(A->gauche);
+                reduire(&lc_g);
                 Liste lc_d = clauses(A->droit);
+                reduire(&lc_d);
                 A = NULL;
                 Clause* cg = lc_g.tete;
                 while (cg != NULL){
